@@ -1,0 +1,19 @@
+name: 'cmake_config'
+description: 'configures cmake in respect to OS'
+inputs:
+  os:
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install conan packages (Windows)
+      shell: cmd
+      if: ${{ inputs.os == 'windows-2022' }}
+      run: cmake -S . -B build-rel -G Ninja -DCMAKE_TOOLCHAIN_FILE="conan_toolchain.cmake" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release -DREMOTE_BUILD=ON
+
+    - name: Install conan packages (Linux)
+      shell: bash 
+      if: ${{ inputs.os == 'ubuntu-22.04' }}
+      run: cmake -S . -B build-rel -DCMAKE_TOOLCHAIN_FILE="conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=Release 

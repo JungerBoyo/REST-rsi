@@ -1,0 +1,64 @@
+name: ci
+
+on:
+  release:
+    types: [published]
+  push:
+    tags:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - windows-2022
+          - ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Windows setup tools
+        if: matrix.os == 'windows-2022'
+        uses: crazy-max/ghaction-chocolatey@v2
+        with:
+          args: install cmake llvm ninja
+
+      - name: Linux setup tools
+        if: matrix.os == 'ubuntu-22.04'
+        run: sudo apt-get install cmake pip
+
+      - name: Install conan package manager
+        run: pip install conan
+
+      - name: Detect conan profile
+        run: conan profile detect
+
+      - name: Install conan packages
+        uses: ./.github/actions/install_conan_packages
+        with:
+          os: ${{ matrix.os }}
+
+      - name: CMake config
+        uses: ./.github/actions/cmake_config
+        with:
+          os: ${{ matrix.os }}
+
+      - name: CMake build
+        run: cmake --build build-rel
+
+      - name: CPack project
+        if: startsWith(github.ref, 'refs/tags')
+        working-directory: build-rel
+        run: cpack -G ZIP --config CPackConfig.cmake
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build-rel/*.zip
+
+    
