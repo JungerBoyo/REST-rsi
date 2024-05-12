@@ -1,4 +1,7 @@
 find_package(spdlog REQUIRED)
+find_package(Pistache REQUIRED)
+find_package(pugixml REQUIRED)
+find_package(nlohmann_json REQUIRED)
 
 if ("${CMAKE_HOST_SYSTEM_NAME}" STREQUAL "Windows")
     # placeholder
@@ -8,8 +11,4 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
     # placeholder
 endif()
 
-add_executable(change-me main.cpp)
-
-target_link_libraries(change-me PRIVATE spdlog::spdlog)
-
-#add_dependencies(change-me some-dependency)
+add_subdirectory(lab9)

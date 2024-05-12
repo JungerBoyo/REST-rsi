@@ -10,9 +10,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 ### project setup ###
 
-project(change-me
+project(RESTful-RSI
     VERSION 1.0.0
-    HOMEPAGE_URL "https://github.com/JungerBoyo/minimal-cpp-template-project"
+    HOMEPAGE_URL "https://github.com/JungerBoyo/REST-rsi"
 )
 
 ######################
@@ -55,7 +55,8 @@ add_subdirectory(src)
 
 ### add conan install as dependency ###
 ### package project ###
-install(TARGETS change-me RUNTIME DESTINATION "./")
+### package project ###
+# install(TARGETS change-me RUNTIME DESTINATION "./")
 # install(TARGETS some-lib DESTINATION "./lib/")
 # install(FILES 
 #     ${CMAKE_CURRENT_SOURCE_DIR}/.../some_include.h

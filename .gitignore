@@ -1,3 +1,6 @@
 build-rel/
 build/
 CMakeUserPresets.json
+.vscode/
+.venv/
+
