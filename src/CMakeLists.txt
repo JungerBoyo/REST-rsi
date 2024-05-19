@@ -12,3 +12,4 @@ if ("${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 endif()
 
 add_subdirectory(lab9)
+add_subdirectory(lab10)

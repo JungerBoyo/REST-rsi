@@ -13,8 +13,8 @@ using namespace Pistache;
 #define ZAD_1
 #define ZAD_2
 #define ZAD_3
-// #define ZAD_4
-#define ZAD_5
+#define ZAD_4
+//#define ZAD_5
 
 #if defined(ZAD_4) && defined(ZAD_5)
 #error "Only 4 or 5"
@@ -168,7 +168,7 @@ struct HelloEchoSerivce {
 };
 int main(int argc, char** argv) {
     try {
-        HelloEchoSerivce service(8081, 1);
+        HelloEchoSerivce service(8080, 1);
         service.run();
     }
     catch (const std::exception &e) {
