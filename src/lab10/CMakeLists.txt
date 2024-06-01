@@ -6,7 +6,6 @@ target_link_libraries(${SUBPROJECT_NAME}
     PRIVATE
         spdlog::spdlog
         Pistache::Pistache
-        pugixml::pugixml
         nlohmann_json::nlohmann_json
 )
 

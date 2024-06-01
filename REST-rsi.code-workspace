@@ -1,1 +1,15 @@
-{"folders":[{"path":"."}]}
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "any": "cpp",
+            "optional": "cpp",
+            "variant": "cpp",
+            "string_view": "cpp"
+        }
+    }
+}
