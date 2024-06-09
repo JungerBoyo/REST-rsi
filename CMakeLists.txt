@@ -10,7 +10,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 ### project setup ###
 
-project(RESTful-RSI
+project(poczta-client
     VERSION 1.0.0
     HOMEPAGE_URL "https://github.com/JungerBoyo/REST-rsi"
 )
