@@ -148,7 +148,6 @@ struct MessagesService {
             );
         }
     }
-    
     void getMessage(const Rest::Request& request, Http::ResponseWriter response) {
         try {
             const auto id = request.param(":id").as<std::size_t>();
